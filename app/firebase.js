@@ -1,11 +1,10 @@
-
-// Import the functions you need from the SDKs you need
+// Configuración e inicialización de Firebase (SDK modular v13 desde CDN)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+// Datos del proyecto obtenidos en la consola de Firebase.
+// Son públicos: identifican al proyecto, no dan acceso por sí solos.
+// La protección real está en los dominios autorizados y las reglas de seguridad.
 const firebaseConfig = {
     apiKey: "AIzaSyAcMzFHMrYSmZ09eoVOMNTJ1GTt1CAhBmM",
     authDomain: "k028-e7f83.firebaseapp.com",
@@ -15,11 +14,7 @@ const firebaseConfig = {
     appId: "1:705611004597:web:f86d2f6eab601b70f35cfc"
 };
 
-console.log("Hola nena");
-
-
-// Initialize Firebase
+// Inicializa la app y exporta la instancia de autenticación
+// para que el resto de los módulos la reutilicen
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-
-

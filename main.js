@@ -1,17 +1,19 @@
+// Punto de entrada: carga cada módulo de la carpeta app/ y vigila la sesión
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
-import { auth } from "./firebase.js";
-import { loginChecker } from "./loginCheck.js";
+import { auth } from "./app/firebase.js";
+import { loginChecker } from "./app/loginCheck.js";
 
-import './firebase.js';
-import './singupForm.js';
-import './signinForm.js';
-import './googleLogin.js';
-import './githubLogin.js';
-import './twitterLogin.js';
-import './logout.js';
-import './loginCheck.js';
+// Cada import registra los eventos de su funcionalidad
+import './app/signupForm.js';
+import './app/signinForm.js';
+import './app/googleLogin.js';
+import './app/facebookLogin.js';
+import './app/githubLogin.js';
+import './app/twitterLogin.js';
+import './app/logout.js';
 
-// Escuchar cambios en la autenticación
-onAuthStateChanged(auth, async (user) => {
+// Se ejecuta al cargar la página y cada vez que se inicia o cierra sesión.
+// user es el usuario autenticado o null si no hay sesión.
+onAuthStateChanged(auth, (user) => {
     loginChecker(user);
 });

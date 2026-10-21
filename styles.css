@@ -546,7 +546,7 @@ h1 span {
 
 .provider-buttons {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 9px;
 }
 
@@ -604,6 +604,18 @@ h1 span {
     color: #fff;
     background: #111722;
     border-color: #111722;
+}
+
+.provider-facebook {
+    color: #fff;
+    background: #1877f2;
+    border-color: #1877f2;
+}
+
+.provider-facebook:hover {
+    color: #fff;
+    background: #0f64d2;
+    border-color: #0f64d2;
 }
 
 .provider-x {

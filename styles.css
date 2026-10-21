@@ -1,0 +1,9 @@
+body {
+    background-color: hsl(0, 0%, 6%);
+    color: aliceblue;
+}
+
+/* Ocultar los elementos de sesión iniciada por defecto */
+.logged-in {
+    display: none;
+}

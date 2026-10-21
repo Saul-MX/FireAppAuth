@@ -8,6 +8,9 @@ twitterButton.addEventListener('click', async () => {
 
     try {
         const credentials = await signInWithPopup(auth, provider);
+        console.log(credentials);
+
+        //Cerrar modal
         const signinModal = document.querySelector('#singin-modal');
         const modal = bootstrap.Modal.getInstance(signinModal);
         modal?.hide();

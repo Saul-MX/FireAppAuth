@@ -13,10 +13,8 @@ googleButton.addEventListener('click', async () => {
         // Cerrar modal
         const signinModal = document.querySelector('#singin-modal');
         const modal = bootstrap.Modal.getInstance(signinModal);
-        if (modal) {
-            modal.hide();
-            alert('Bienvnido' + credenciales.user.displayName)
-        }
+        modal?.hide();
+        alert(`Bienvenido ${credenciales.user.displayName || credenciales.user.email || ''}`);
     } catch (error) {
         console.error(error);
         if (error.code !== 'auth/popup-closed-by-user') {

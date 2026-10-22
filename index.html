@@ -45,7 +45,8 @@
     </nav>
 
     <main class="page-main">
-        <div class="container">
+        <!-- Bienvenida: visible solo sin sesión -->
+        <div class="container logged-out">
             <section class="welcome-panel">
                 <div class="welcome-copy">
                     <span class="eyebrow"><span class="eyebrow-dot"></span> Acceso simple, seguro y rápido</span>
@@ -149,6 +150,45 @@
                 </div>
             </section>
         </div>
+
+        <!-- Módulo de productos: visible solo con sesión (productList.js lo llena y lo limpia) -->
+        <div class="container logged-in products-view">
+            <section aria-labelledby="products-title">
+                <header class="products-header">
+                    <div>
+                        <span class="eyebrow"><span class="eyebrow-dot"></span> <span>Sesión de <span id="products-user"></span></span></span>
+                        <h1 class="products-title" id="products-title">Mis productos</h1>
+                        <p class="products-subtitle">
+                            <span id="products-count"></span>
+                            <span aria-hidden="true">·</span>
+                            Se guardan en <code id="products-path"></code>
+                        </p>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-lg products-new" data-new-product>
+                        <svg aria-hidden="true" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 4.2v11.6M4.2 10h11.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                        </svg>
+                        Nuevo producto
+                    </button>
+                </header>
+
+                <p class="products-status" id="products-status" role="status" hidden></p>
+
+                <div class="products-empty" id="products-empty" hidden>
+                    <span class="feature-icon feature-blue" aria-hidden="true">
+                        <svg viewBox="0 0 20 20" fill="none">
+                            <path d="M10 2.8 3.4 6.1v7.8l6.6 3.3 6.6-3.3V6.1L10 2.8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                            <path d="m3.6 6.2 6.4 3.2 6.4-3.2M10 9.4V17" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <h2>Aún no tienes productos</h2>
+                    <p>Registra tu primer producto con su nombre, precio, existencias y de 1 a 5 imágenes.</p>
+                    <button type="button" class="btn btn-primary" data-new-product>Registrar mi primer producto</button>
+                </div>
+
+                <div class="product-grid" id="product-list"></div>
+            </section>
+        </div>
     </main>
 
     <footer class="site-footer">
@@ -245,6 +285,162 @@
                         Al crear una cuenta podrás iniciar sesión de forma segura desde tus dispositivos.
                     </p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Plantilla de cada tarjeta de producto (productList.js la clona y la llena) -->
+    <template id="product-template">
+        <article class="product-card">
+            <div class="product-cover">
+                <img alt="">
+                <span class="product-cover-note"></span>
+                <span class="product-photo-count"></span>
+            </div>
+            <div class="product-thumbs"></div>
+            <div class="product-body">
+                <div class="product-tags">
+                    <span class="product-category"></span>
+                    <span class="product-stock"></span>
+                </div>
+                <h2 class="product-name"></h2>
+                <p class="product-description"></p>
+                <strong class="product-price"></strong>
+                <small class="product-date"></small>
+                <div class="product-actions">
+                    <button type="button" class="btn btn-soft product-edit">
+                        <svg aria-hidden="true" viewBox="0 0 20 20" fill="none">
+                            <path d="m12.6 4.4 3 3M4 16l.7-3.4 8.9-8.9a1.5 1.5 0 0 1 2.1 0l.6.6a1.5 1.5 0 0 1 0 2.1l-8.9 8.9L4 16Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Editar
+                    </button>
+                    <button type="button" class="btn btn-soft btn-soft-danger product-delete">
+                        <svg aria-hidden="true" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 5.8h12M8.2 5.8V4.4c0-.5.4-.9.9-.9h1.8c.5 0 .9.4.9.9v1.4M6 5.8l.7 9.6c.1.8.7 1.4 1.5 1.4h3.6c.8 0 1.4-.6 1.5-1.4l.7-9.6M8.6 9v4.8M11.4 9v4.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Eliminar
+                    </button>
+                </div>
+            </div>
+        </article>
+    </template>
+
+    <!-- Formulario para registrar y editar productos (productForm.js e imagePicker.js) -->
+    <div class="modal fade app-modal product-modal" id="product-modal" tabindex="-1" aria-labelledby="product-modal-title"
+        aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <span class="modal-eyebrow" id="product-modal-eyebrow">Agrega un artículo a tu catálogo</span>
+                        <h2 class="modal-title" id="product-modal-title">Nuevo producto</h2>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="product-form">
+                        <div class="product-fields">
+                            <div class="form-field field-wide">
+                                <label for="product-name">Nombre</label>
+                                <input type="text" id="product-name" placeholder="Ej. Audífonos inalámbricos"
+                                    maxlength="80" required class="form-control">
+                            </div>
+                            <div class="form-field field-wide">
+                                <label for="product-description">Descripción</label>
+                                <textarea id="product-description" rows="3" placeholder="Describe brevemente el producto"
+                                    maxlength="500" required class="form-control"></textarea>
+                            </div>
+                            <div class="form-field">
+                                <label for="product-price">Precio (MXN)</label>
+                                <input type="number" id="product-price" placeholder="0.00" min="0" step="0.01"
+                                    inputmode="decimal" required class="form-control">
+                            </div>
+                            <div class="form-field">
+                                <label for="product-category">Categoría</label>
+                                <select id="product-category" required class="form-select">
+                                    <option value="" selected disabled>Elige una</option>
+                                    <option>Electrónica</option>
+                                    <option>Ropa y calzado</option>
+                                    <option>Hogar y cocina</option>
+                                    <option>Alimentos y bebidas</option>
+                                    <option>Salud y belleza</option>
+                                    <option>Deportes</option>
+                                    <option>Juguetes</option>
+                                    <option>Papelería y oficina</option>
+                                    <option>Otros</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label for="product-stock">Existencias</label>
+                                <input type="number" id="product-stock" placeholder="0" min="0" step="1"
+                                    inputmode="numeric" required class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="image-field">
+                            <div class="image-field-header">
+                                <span class="image-field-title">Imágenes</span>
+                                <span class="image-counter" id="image-counter">0 / 5</span>
+                            </div>
+                            <label class="image-dropzone" id="image-dropzone">
+                                <input type="file" id="product-images" accept="image/*" multiple class="visually-hidden">
+                                <span class="image-dropzone-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <rect x="3.5" y="4.5" width="17" height="15" rx="3" stroke="currentColor" stroke-width="1.6" />
+                                        <circle cx="9" cy="10" r="1.8" stroke="currentColor" stroke-width="1.6" />
+                                        <path d="m4 17 4.6-4.4a1.6 1.6 0 0 1 2.2 0l4.2 4m-1.6-1.6 1.9-1.8a1.6 1.6 0 0 1 2.2 0l2.5 2.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                <strong id="image-dropzone-text">Haz clic o arrastra tus imágenes aquí</strong>
+                                <small>De 1 a 5 imágenes · JPG, PNG o WebP · máximo 10 MB cada una</small>
+                            </label>
+                            <div class="form-alert" id="image-feedback" role="alert" hidden></div>
+                            <ul class="image-previews" id="image-previews" aria-label="Vista previa de las imágenes"></ul>
+                            <p class="image-note">
+                                Antes de guardarse se reducen a 800 px y se comprimen (máximo 300 KB cada una).
+                                La primera imagen es la portada.
+                            </p>
+                        </div>
+
+                        <div class="form-alert" id="product-feedback" role="alert" hidden></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-soft" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="product-submit" form="product-form">Guardar producto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmación para eliminar un producto (productDelete.js) -->
+    <div class="modal fade app-modal delete-modal" id="delete-modal" tabindex="-1" aria-labelledby="delete-title"
+        aria-describedby="delete-message" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body delete-body">
+                    <span class="delete-icon" aria-hidden="true">
+                        <svg viewBox="0 0 20 20" fill="none">
+                            <path d="M4 5.8h12M8.2 5.8V4.4c0-.5.4-.9.9-.9h1.8c.5 0 .9.4.9.9v1.4M6 5.8l.7 9.6c.1.8.7 1.4 1.5 1.4h3.6c.8 0 1.4-.6 1.5-1.4l.7-9.6M8.6 9v4.8M11.4 9v4.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <h2 class="modal-title" id="delete-title">¿Eliminar producto?</h2>
+                    <p id="delete-message"></p>
+                    <div class="delete-actions">
+                        <button type="button" class="btn btn-soft" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="delete-confirm">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Avisos breves (toast.js) -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div class="toast app-toast" id="app-toast" role="status" aria-live="polite" aria-atomic="true">
+            <div class="toast-body">
+                <span class="toast-dot" aria-hidden="true"></span>
+                <span id="app-toast-message"></span>
             </div>
         </div>
     </div>

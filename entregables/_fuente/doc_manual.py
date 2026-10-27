@@ -55,7 +55,6 @@ de Firebase.</p>
 <p>La base de datos se crea en la consola de Firebase, en <b>Build → Firestore Database → Create database</b>.
 Se elige la ubicación de los datos y, en el paso de reglas, el <b>modo de prueba</b> (<i>Start in test mode</i>),
 que permite leer y escribir mientras se desarrolla. Al terminar, Firestore queda listo para recibir datos.</p>
-{captura('firestore-crear', 'Consola de Firebase → Firestore Database → Create database, con «Start in test mode» seleccionado.', 'Creación de la base de datos de Firestore en modo de prueba.')}
 <p>Las reglas del modo de prueba dejan el acceso abierto durante un tiempo limitado. Es suficiente para esta
 actividad, pero no es seguro para producción: cualquiera que conozca el proyecto podría leer y modificar los datos.
 En la investigación (documento C) se explica qué cambiaría con reglas de seguridad; aquí solo se mencionan y no se

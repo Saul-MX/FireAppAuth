@@ -1,7 +1,7 @@
 {
-  "integrantes": ["Saul Domínguez Torres", "[Nombre del segundo integrante]"],
-  "materia": "[Materia]",
-  "docente": "[Docente]",
+  "integrantes": ["Saul Domínguez Torres", "Jorge Diego López Atenco"],
+  "materia": "Desarrollo de Aplicaciones Web",
+  "docente": "Emmanuel Hernández Ortiz",
   "fecha": "27 de octubre de 2026",
   "url_publica": "https://k028-e7f83.web.app",
   "repositorio": "https://github.com/Saul-MX/FireAppAuth",

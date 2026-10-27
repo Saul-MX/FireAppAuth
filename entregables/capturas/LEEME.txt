@@ -19,8 +19,6 @@ Si el archivo existe, el manual lo inserta en lugar del recuadro «CAPTURA PENDI
       Firestore → un documento de la subcolección images abierto, con los campos data (Base64), nombreArchivo y orden.
   app-lista.png
       La sección «Mis productos» con las tarjetas: imagen principal, miniaturas, categoría, existencias, precio y botones Editar y Eliminar.
-  firestore-dos-usuarios.png
-      Firestore → colección users con al menos dos uid distintos, cada uno con su propia subcolección products.
   cli-instalacion.png
       La terminal con firebase --version y firebase login completado.
   cli-init.png

@@ -21,8 +21,6 @@ Si el archivo existe, el manual lo inserta en lugar del recuadro «CAPTURA PENDI
       La terminal ejecutando firebase init hosting con las preguntas y respuestas.
   cli-deploy.png
       La terminal al terminar firebase deploy --only hosting, con «Deploy complete!» y la Hosting URL.
-  hosting-panel.png
-      Consola de Firebase → Hosting: dominios .web.app y .firebaseapp.com y la tabla Release history.
   app-publicada.png
       El navegador abriendo la URL pública https://k028-e7f83.web.app con la aplicación funcionando (se ve el candado de HTTPS).
   auth-dominios.png

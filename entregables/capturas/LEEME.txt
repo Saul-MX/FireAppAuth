@@ -11,8 +11,6 @@ Si el archivo existe, el manual lo inserta en lugar del recuadro «CAPTURA PENDI
       El formulario con varias imágenes cargadas: contador (por ejemplo 3 / 5), vista previa, peso y etiqueta «Portada».
   app-lista.png
       La sección «Mis productos» con las tarjetas: imagen principal, miniaturas, categoría, existencias, precio y botones Editar y Eliminar.
-  cli-init.png
-      La terminal ejecutando firebase init hosting con las preguntas y respuestas.
   cli-deploy.png
       La terminal al terminar firebase deploy --only hosting, con «Deploy complete!» y la Hosting URL.
   app-publicada.png

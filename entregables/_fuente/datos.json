@@ -72,6 +72,13 @@
       "actividad": "Participar en la demostración en vivo de la aplicación desde la URL pública de Firebase Hosting.",
       "commit": "",
       "mensaje": ""
+    },
+    {
+      "integrante": "Jorge Diego López Atenco",
+      "fecha": "27/10/2026",
+      "actividad": "Clonó el repositorio, configuró Git con su cuenta de GitHub, creó la rama diego-capturas y registró sus actividades en la bitácora.",
+      "commit": "4216467",
+      "mensaje": "Bitácora: registro de Jorge Diego"
     }
   ]
 }

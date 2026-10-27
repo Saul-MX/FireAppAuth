@@ -1,6 +1,7 @@
 // Configuración e inicialización de Firebase (SDK modular v13 desde CDN)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
 
 // Datos del proyecto obtenidos en la consola de Firebase.
 // Son públicos: identifican al proyecto, no dan acceso por sí solos.
@@ -14,7 +15,8 @@ const firebaseConfig = {
     appId: "1:705611004597:web:f86d2f6eab601b70f35cfc"
 };
 
-// Inicializa la app y exporta la instancia de autenticación
-// para que el resto de los módulos la reutilicen
+// Inicializa la app y exporta las instancias de autenticación y de Cloud Firestore
+// para que el resto de los módulos las reutilicen
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const db = getFirestore(app);

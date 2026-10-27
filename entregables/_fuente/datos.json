@@ -1,0 +1,39 @@
+{
+  "integrantes": ["Saul Domínguez Torres", "[Nombre del segundo integrante]"],
+  "materia": "[Materia]",
+  "docente": "[Docente]",
+  "fecha": "27 de octubre de 2026",
+  "url_publica": "https://k028-e7f83.web.app",
+  "repositorio": "https://github.com/Saul-MX/FireAppAuth",
+  "proyecto_firebase": "k028-e7f83",
+  "bitacora": [
+    {
+      "integrante": "Saul Domínguez Torres",
+      "fecha": "21/10/2026",
+      "actividad": "Creó el repositorio y la base de la app de autenticación: Firebase Authentication con correo, Google, GitHub y X, y control de sesión (Signin, Signup y Logout).",
+      "commit": "1235c7b",
+      "mensaje": "first commit"
+    },
+    {
+      "integrante": "Saul Domínguez Torres",
+      "fecha": "21/10/2026",
+      "actividad": "Rediseñó la interfaz con Bootstrap y estilos propios (index.html y styles.css).",
+      "commit": "6b62e0e",
+      "mensaje": "Solo cambio de diseño"
+    },
+    {
+      "integrante": "Saul Domínguez Torres",
+      "fecha": "21/10/2026",
+      "actividad": "Modularizó el código en la carpeta app/, agregó el inicio de sesión con Facebook y los mensajes de error de Authentication.",
+      "commit": "fedc335",
+      "mensaje": "Terminado"
+    },
+    {
+      "integrante": "Saul Domínguez Torres",
+      "fecha": "22/10/2026",
+      "actividad": "Gestor de productos: Firestore (users/{uid}/products), formulario con validación de 1 a 5 imágenes, procesamiento con canvas y Base64, CRUD completo y publicación en Firebase Hosting.",
+      "commit": "5047c05",
+      "mensaje": "Gestor de productos con Firestore y Firebase Hosting"
+    }
+  ]
+}

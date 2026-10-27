@@ -2,6 +2,7 @@
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
 import { auth } from "./app/firebase.js";
 import { loginChecker } from "./app/loginCheck.js";
+import { showProducts, clearProducts } from "./app/productList.js";
 
 // Cada import registra los eventos de su funcionalidad
 import './app/signupForm.js';
@@ -11,9 +12,19 @@ import './app/facebookLogin.js';
 import './app/githubLogin.js';
 import './app/twitterLogin.js';
 import './app/logout.js';
+import './app/imagePicker.js';
+import './app/productForm.js';
+import './app/productDelete.js';
 
 // Se ejecuta al cargar la página y cada vez que se inicia o cierra sesión.
 // user es el usuario autenticado o null si no hay sesión.
 onAuthStateChanged(auth, (user) => {
     loginChecker(user);
+
+    // Con sesión se escuchan solo los productos de su uid; sin sesión se limpia la pantalla
+    if (user) {
+        showProducts(user);
+    } else {
+        clearProducts();
+    }
 });

@@ -7,8 +7,6 @@ Si el archivo existe, el manual lo inserta en lugar del recuadro «CAPTURA PENDI
 
   firestore-crear.png
       Consola de Firebase → Firestore Database → Create database, con «Start in test mode» seleccionado.
-  firestore-reglas.png
-      Firestore Database → pestaña Rules, mostrando las reglas del modo de prueba y su fecha de vencimiento.
   firestore-estructura.png
       Firestore Database → Data: users → {uid} → products → {id} → images, con los campos de cada documento visibles.
   app-validacion-max.png

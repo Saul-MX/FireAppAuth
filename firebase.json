@@ -6,7 +6,8 @@
       "**/.*",
       "**/.*/**",
       "**/node_modules/**",
-      "**/*.log"
+      "**/*.log",
+      "entregables/**"
     ],
     "headers": [
       {

@@ -5,11 +5,4 @@ Guarda cada captura en esta carpeta con el nombre indicado (.png, .jpg o .webp) 
 
 Si el archivo existe, el manual lo inserta en lugar del recuadro «CAPTURA PENDIENTE».
 
-  app-validacion-max.png
-      La aplicación mostrando el mensaje de error al seleccionar más de 5 imágenes (por ejemplo, 6).
-  app-vista-previa.png
-      El formulario con varias imágenes cargadas: contador (por ejemplo 3 / 5), vista previa, peso y etiqueta «Portada».
-  app-lista.png
-      La sección «Mis productos» con las tarjetas: imagen principal, miniaturas, categoría, existencias, precio y botones Editar y Eliminar.
-  app-publicada.png
-      El navegador abriendo la URL pública https://k028-e7f83.web.app con la aplicación funcionando (se ve el candado de HTTPS).
+(No hay capturas pendientes.)

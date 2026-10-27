@@ -1,7 +1,10 @@
 {
-  "integrantes": ["Saul Domínguez Torres", "[Nombre del segundo integrante]"],
-  "materia": "[Materia]",
-  "docente": "[Docente]",
+  "integrantes": [
+    "Saul Domínguez Torres",
+    "Jorge Diego López Atenco"
+  ],
+  "materia": "Desarrollo de Aplicaciones Web",
+  "docente": "Emmanuel Hernández Ortiz",
   "fecha": "27 de octubre de 2026",
   "url_publica": "https://k028-e7f83.web.app",
   "repositorio": "https://github.com/Saul-MX/FireAppAuth",
@@ -34,6 +37,41 @@
       "actividad": "Gestor de productos: Firestore (users/{uid}/products), formulario con validación de 1 a 5 imágenes, procesamiento con canvas y Base64, CRUD completo y publicación en Firebase Hosting.",
       "commit": "5047c05",
       "mensaje": "Gestor de productos con Firestore y Firebase Hosting"
+    },
+    {
+      "integrante": "Jorge Diego López Atenco",
+      "fecha": "25/10/2026",
+      "actividad": "Tomar las capturas de Firestore para el manual: creación de la base en modo de prueba, reglas, estructura users/{uid}/products/{id}/images y un documento de imagen en Base64.",
+      "commit": "",
+      "mensaje": ""
+    },
+    {
+      "integrante": "Jorge Diego López Atenco",
+      "fecha": "25/10/2026",
+      "actividad": "Probar la aplicación con una segunda cuenta: validación de más de 5 imágenes, vista previa, alta, edición y eliminación de productos, y capturar la colección users con dos uid distintos.",
+      "commit": "",
+      "mensaje": ""
+    },
+    {
+      "integrante": "Jorge Diego López Atenco",
+      "fecha": "26/10/2026",
+      "actividad": "Tomar las capturas de Firebase CLI y Hosting: instalación y login, firebase init hosting, firebase deploy, panel de Hosting, dominios autorizados, proveedores de Authentication y la app publicada.",
+      "commit": "",
+      "mensaje": ""
+    },
+    {
+      "integrante": "Jorge Diego López Atenco",
+      "fecha": "26/10/2026",
+      "actividad": "Integrar las capturas en entregables/capturas/, regenerar los PDF con generar.py y subir los cambios desde su rama con un pull request.",
+      "commit": "",
+      "mensaje": ""
+    },
+    {
+      "integrante": "Jorge Diego López Atenco",
+      "fecha": "26/10/2026",
+      "actividad": "Participar en la demostración en vivo de la aplicación desde la URL pública de Firebase Hosting.",
+      "commit": "",
+      "mensaje": ""
     }
   ]
 }

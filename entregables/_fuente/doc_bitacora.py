@@ -26,6 +26,7 @@ table.reg td.c{width:118pt}
 table.reg td.c a{font-weight:700;text-decoration:underline}
 table.reg td.c small{display:block;color:#59595e;font-size:7.3pt;margin-top:1pt}
 table.reg td.vacio{height:21pt}
+table.reg td.c .pend{font-weight:700;color:#59595e}
 .pie{font-size:7.6pt;color:#59595e;margin-top:8pt;line-height:1.4}
 """
 
@@ -39,10 +40,14 @@ def construir(d):
     for nombre in nombres:
         filas = ''
         for r in por_persona[nombre]:
-            enlace = f"{repo}/commit/{r['commit']}"
+            if r['commit']:
+                enlace = f"{repo}/commit/{r['commit']}"
+                commit = f'<a href="{enlace}">{esc(r["commit"])}</a><small>{esc(r["mensaje"])}</small>'
+            else:
+                # Actividad planeada: aún no tiene commit
+                commit = '<span class="pend">Pendiente</span>'
             filas += (f'<tr><td class="f">{esc(r["fecha"])}</td><td>{esc(r["actividad"])}</td>'
-                      f'<td class="c"><a href="{enlace}">{esc(r["commit"])}</a>'
-                      f'<small>{esc(r["mensaje"])}</small></td></tr>')
+                      f'<td class="c">{commit}</td></tr>')
         if not por_persona[nombre]:
             # Sin registros: renglones en blanco para que el integrante los complete
             filas = '<tr><td class="f vacio"></td><td></td><td class="c"></td></tr>' * 4
